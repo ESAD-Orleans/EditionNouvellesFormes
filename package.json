@@ -16,10 +16,17 @@
     "app"
   ],
   "author": "ESAD-Orleans",
-  "contributors": [{"name":"Arthur Violy","email":"avioly@esad-orleans.fr","url":"http://i.nterfaces.org"}],
+  "contributors": [
+    {
+      "name": "Arthur Violy",
+      "email": "avioly@esad-orleans.fr",
+      "url": "http://i.nterfaces.org"
+    }
+  ],
   "license": "Artistic License 2.0",
   "bugs": {
     "url": "https://github.com/ESAD-Orleans/EditionNouvellesFormes/issues"
   },
-  "homepage": "https://github.com/ESAD-Orleans/EditionNouvellesFormes"
+  "homepage": "https://github.com/ESAD-Orleans/EditionNouvellesFormes",
+  "devDependencies": {}
 }

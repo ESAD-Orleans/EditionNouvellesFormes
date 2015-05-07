@@ -1,0 +1,28 @@
+{
+  "name": "EditionNouvellesFormes",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ESAD-Orleans/EditionNouvellesFormes",
+  "authors": [
+    "ESAD-Orleans"
+  ],
+  "description": "Edition Nouvelles Formes iPad publication",
+  "main": "js/index.js",
+  "keywords": [
+    "edition",
+    "ipad",
+    "app"
+  ],
+  "license": "Artistic License 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "backbone": "~1.1.2"
+  }
+}
