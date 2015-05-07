@@ -23,6 +23,9 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "underscore": "~1.8.3",
-    "backbone": "~1.1.2"
+    "backbone": "~1.1.2",
+    "mustache.js": "~2.0.0",
+    "requirejs-plugins": "~1.0.3",
+    "requirejs-mustache": "*"
   }
 }

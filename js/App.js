@@ -2,5 +2,6 @@
 // 2015
 // App RequireJS Module
 //
-define(['jquery'], function ($) {
+define(['views/AppView'], function (AppView, AppModel) {
+	new AppView();
 });
