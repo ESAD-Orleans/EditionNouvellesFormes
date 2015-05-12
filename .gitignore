@@ -6,8 +6,6 @@ node_modules/
 bower_components/
 *.log
 
-!bower_components/**/*min.js
-!bower_components/**/backbone.js
 
 build/
 dist/
