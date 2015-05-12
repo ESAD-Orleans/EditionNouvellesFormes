@@ -67,7 +67,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 9, ../sass/app.scss */
+/* line 10, ../sass/app.scss */
 html, body {
   background: #ccc;
   overflow: hidden;
@@ -76,11 +76,47 @@ html, body {
   height: 100%;
 }
 
-/* line 17, ../sass/app.scss */
+/* line 18, ../sass/app.scss */
 #root {
   background: red;
   position: absolute;
   left: 50vw;
   top: 50vh;
   margin: auto;
+}
+
+/* line 26, ../sass/app.scss */
+.square {
+  position: absolute;
+  background: #fff;
+  width: 100px;
+  height: 100px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: solid white 1px;
+}
+/* line 34, ../sass/app.scss */
+.square.TR, .square.TL {
+  bottom: -1px;
+}
+/* line 37, ../sass/app.scss */
+.square.BR, .square.TR {
+  right: -1px;
+}
+/* line 40, ../sass/app.scss */
+.square.tint-white {
+  background-color: white;
+}
+/* line 41, ../sass/app.scss */
+.square.tint-orange {
+  background-color: #ef6814;
+}
+/* line 42, ../sass/app.scss */
+.square.tint-blue {
+  background-color: #57b5f4;
+}
+/* line 43, ../sass/app.scss */
+.square.tint-green {
+  background-color: #61d772;
 }

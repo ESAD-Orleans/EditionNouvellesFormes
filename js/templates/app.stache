@@ -1,1 +1,5 @@
-<div id="root"></div>
+<div id="root">
+	{{#models}}
+		<div id="square-{{#m}}id{{/m}}" class="square {{#m}}turn{{/m}} tint-{{#m}}color{{/m}}"></div>
+	{{/models}}
+</div>

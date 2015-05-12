@@ -1,8 +1,39 @@
 {
-	"root":{
-
-		"nodes":[
-
-		]
-	}
+	"parents":[
+		"seminaires",
+		"ressources",
+		"conferences",
+		"expositions"
+	],
+	"turn":["TL","BL","BR","TR"],
+	"squares":[
+		{
+			"id":"expositions",
+			"title":"Expositions",
+			"color":"blue"
+		},
+		{
+			"id":"seminaires",
+			"title":"Séminaires",
+			"color":"green"
+		},
+		{
+			"id":"conferences",
+			"title":"Conférences",
+			"color":"white",
+			"children":["conference-tab"]
+		},
+		{
+			"id":"ressources",
+			"title":"Ressources",
+			"color":"orange"
+		},
+		{
+			"id":"conference-tab",
+			"children":["conference-textes"]
+		},
+		{
+			"id":"conference-textes"
+		}
+	]
 }

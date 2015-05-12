@@ -6,8 +6,10 @@ define(['underscore', 'jquery', 'backbone','models/AppModel', 'stache!app'], fun
 	return Backbone.View.extend({
 		el:'body',
 		initialize:function(){
-			console.log('setuo AppView');
-			this.$el.html(template());
+			this.render();
+		},
+		render:function(){
+			this.$el.html(template(app.get('squares')));
 		}
 	});
 });
