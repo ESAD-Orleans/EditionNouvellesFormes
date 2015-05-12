@@ -67,7 +67,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 13, ../sass/app.scss */
+/* line 14, ../sass/app.scss */
 html, body {
   background: #ccc;
   overflow: hidden;
@@ -76,7 +76,7 @@ html, body {
   height: 100%;
 }
 
-/* line 21, ../sass/app.scss */
+/* line 22, ../sass/app.scss */
 #roots {
   position: absolute;
   left: 50vw;
@@ -84,12 +84,10 @@ html, body {
   margin: auto;
 }
 
-/* line 28, ../sass/app.scss */
+/* line 29, ../sass/app.scss */
 .square {
   position: absolute;
   background: #fff;
-  width: 100px;
-  height: 100px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -99,32 +97,47 @@ html, body {
   transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
   border: solid white 1px;
 }
-/* line 37, ../sass/app.scss */
-.square.opened {
-  width: 200px;
-  height: 200px;
-}
-/* line 42, ../sass/app.scss */
+/* line 38, ../sass/app.scss */
 .square.TR, .square.TL {
   bottom: -1px;
 }
-/* line 45, ../sass/app.scss */
+/* line 41, ../sass/app.scss */
 .square.BR, .square.TR {
   right: -1px;
 }
-/* line 48, ../sass/app.scss */
+/* line 54, ../sass/app.scss */
 .square.tint-white {
   background-color: white;
 }
-/* line 49, ../sass/app.scss */
+/* line 55, ../sass/app.scss */
 .square.tint-orange {
   background-color: #ef6814;
 }
-/* line 50, ../sass/app.scss */
+/* line 56, ../sass/app.scss */
 .square.tint-blue {
   background-color: #57b5f4;
 }
-/* line 51, ../sass/app.scss */
+/* line 57, ../sass/app.scss */
 .square.tint-green {
   background-color: #61d772;
+}
+/* line 59, ../sass/app.scss */
+.square .children {
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  -moz-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+  -o-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+  -webkit-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+  transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+}
+/* line 68, ../sass/app.scss */
+.square.opened {
+  border: solid #000 1px;
+}
+/* line 70, ../sass/app.scss */
+.square.opened > .children {
+  visibility: visible;
 }

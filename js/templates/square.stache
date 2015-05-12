@@ -1,3 +1,5 @@
-{{#children}}
+<div class="children">
+{{#renderChildren}}
 	<div id="square-{{id}}"></div>
-{{/children}}
+{{/renderChildren}}
+</div>

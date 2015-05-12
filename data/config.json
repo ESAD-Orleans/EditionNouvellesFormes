@@ -5,35 +5,72 @@
 		"conferences",
 		"expositions"
 	],
-	"turn":["TL","BL","BR","TR"],
 	"squares":[
 		{
 			"id":"expositions",
 			"title":"Expositions",
-			"color":"blue"
+			"tint":"blue",
+			"children": ["expo-a","expo-b","expo-c"]
 		},
 		{
 			"id":"seminaires",
 			"title":"Séminaires",
-			"color":"green"
+			"tint":"green"
 		},
 		{
 			"id":"conferences",
 			"title":"Conférences",
-			"color":"white",
+			"tint":"white",
 			"children":["conference-tab"]
 		},
 		{
 			"id":"ressources",
 			"title":"Ressources",
-			"color":"orange"
+			"tint":"orange",
+			"children": [
+				"ressource-a",
+				"ressource-b",
+				"ressource-c"
+			]
+
 		},
 		{
-			"id":"conference-tab",
-			"children":["conference-textes"]
+			"id":"conference-tab"
 		},
 		{
 			"id":"conference-textes"
+		},
+		{
+			"id":"expo-a",
+			"children": [
+				"expo-a-a",
+				"expo-a-b",
+				"expo-a-c"
+			]
+		},
+		{
+			"id": "expo-b"
+		},
+		{
+			"id": "expo-c"
+		},
+		{
+			"id":"expo-a-a"
+		},
+		{
+			"id": "expo-a-b"
+		},
+		{
+			"id": "expo-a-c"
+		},
+		{
+			"id":"ressource-a"
+		},
+		{
+			"id": "ressource-b"
+		},
+		{
+			"id": "ressource-c"
 		}
 	]
 }

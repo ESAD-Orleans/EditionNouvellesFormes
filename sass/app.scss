@@ -7,6 +7,7 @@
 @import "compass/css3/box-sizing";
 @import "compass/css3/transition";
 @import "compass/css3/transform";
+@import "compass/css3/animation";
 
 @import "compass/reset";
 
@@ -28,15 +29,10 @@ html,body{
 .square{
   position: absolute;
   background: #fff;
-  width:100px;
-  height: 100px;
   @include box-sizing();
   @include transition();
   border:solid $white 1px;
-
   &.opened{
-    width:200px;
-    height:200px;
   }
 
   &.TR,&.TL{
@@ -45,9 +41,36 @@ html,body{
   &.BR,&.TR{
     right:-1px;
   }
+  &.BL,&.TL{
+    > .children {
+      //left: 100%;
+    }
+  }
+  &.BR,&.BL{
+    > .children{
+      //top:100%;
+    }
+  }
   &.tint-white { background-color:$white;}
   &.tint-orange { background-color:$orange;}
   &.tint-blue { background-color:$blue;}
   &.tint-green { background-color:$green;}
 
+  .children{
+    position:absolute;
+    width:0%;
+    height:0%;
+    left:50%;
+    top:50%;
+    @include transition();
+  }
+
+  &.opened{
+    border: solid #000 1px;
+    > .children{
+      visibility: visible;
+    }
+  }
+
 }
+

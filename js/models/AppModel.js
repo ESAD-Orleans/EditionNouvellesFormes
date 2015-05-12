@@ -2,11 +2,11 @@
 // 2015
 // AppModel Backbone Model
 //
-define(['underscore', 'jquery', 'backbone', 'json!../../data/config.json'], function (_, $, Backbone,config) {
+define(['underscore', 'jquery', 'backbone', 'json!../../data/config.json','json!../../data/turns.json'], function (_, $, Backbone,config,turns) {
 	var app,
 		AppModel =  Backbone.Model.extend({
 			turn:function(index){
-				return config.turn[index];
+				return turns[index];
 			},
 			findSquareByIds:function(ids){
 				var result = [];
