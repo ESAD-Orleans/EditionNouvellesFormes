@@ -14,8 +14,7 @@ define(['underscore', 'jquery', 'backbone', 'models/AppModel'], function (_, $, 
 			var model = this,
 				SquareCollection = this.collection.constructor,
 				children = this.get('children');
-			if(model.get('parent')){
-			}
+
 			if(!_.isUndefined(children) && children.length>0){
 				children = app.findSquareByIds(children);
 				_(children).each(function(square,index){
@@ -27,6 +26,9 @@ define(['underscore', 'jquery', 'backbone', 'models/AppModel'], function (_, $, 
 		},
 		index:function(){
 			return this.collection ? this.collection.indexOf(this) : -1;
+		},
+		children:function(){
+			return this.get('children');
 		}
 	});
 

@@ -2,7 +2,7 @@
 // 2015
 // SquareView Backbone View
 //
-define(['underscore', 'jquery', 'backbone','models/SquareModel'], function (_, $, Backbone, SquareModel) {
+define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square'], function (_, $, Backbone, SquareModel, template) {
 	return Backbone.View.extend({
 
 		events:{
@@ -17,7 +17,8 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel'], function (_, $
 				classes = ['square'];
 			_(classes).push(model.get('turn'));
 			_(classes).push('tint-'+model.get('color'));
-			this.$el.addClass(classes.join(' '))
+			this.$el.addClass(classes.join(' '));
+			this.$el.html(template(model));
 		},
 		toggleOpening:function(){
 			this.$el.toggleClass('opened');
