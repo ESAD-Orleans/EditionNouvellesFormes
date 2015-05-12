@@ -63,12 +63,14 @@ html,body{
     left:50%;
     top:50%;
     @include transition();
+    //visibility: hidden;
+    //opacity: 0;
   }
 
   &.opened{
-    border: solid #000 1px;
     > .children{
-      visibility: visible;
+      //visibility: visible;
+      //opacity:1;
     }
   }
 

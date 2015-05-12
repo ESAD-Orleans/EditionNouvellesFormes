@@ -25,8 +25,14 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 				if(_.isUndefined(this.get('tint'))){
 					model.set('tint',parent.tint());
 				}
+				if(_.isUndefined(this.get('zIndex'))){
+					model.set('zIndex',parent.get('zIndex')+1);
+				}
 			}else{
-				this.set('root',model);
+				this.set({
+					root:model,
+					zIndex:0
+				});
 			}
 
 			if(!_.isUndefined(children) && children.length>0){
@@ -41,6 +47,7 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			}
 			_(squares).push(model);
 			this.bind('change:opened',this.changeOpening,this);
+			this.bind('changeSize',this.changeSize,this);
 		},
 		root:function(){
 			return this.get('root');
@@ -91,7 +98,11 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 				});
 			}
 			this.trigger('changeSize');
-			if(opening && children){
+		},
+		changeSize:function(){
+			console.log('changeSize', this.get('id'), this.opened());
+			var children = this.get('children');
+			if (children) {
 				children.each(function (square) {
 					square.trigger('changeSize');
 				});

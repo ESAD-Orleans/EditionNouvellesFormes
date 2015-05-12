@@ -133,11 +133,3 @@ html, body {
   -webkit-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
   transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
 }
-/* line 68, ../sass/app.scss */
-.square.opened {
-  border: solid #000 1px;
-}
-/* line 70, ../sass/app.scss */
-.square.opened > .children {
-  visibility: visible;
-}

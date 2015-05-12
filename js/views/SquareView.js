@@ -22,7 +22,7 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square']
 			this.$el.find('> .children > *').each(function(){
 				new SquareView({el:this});
 			});
-			this.$el.css({width:model.width(),height:model.height()});
+			this.$el.css({width:model.width(),height:model.height(),zIndex:model.get('zIndex')});
 			model.bind('changeSize',this.changeSize,this);
 		},
 		toggleOpening:function(e){

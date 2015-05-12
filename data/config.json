@@ -42,6 +42,7 @@
 		},
 		{
 			"id":"expo-a",
+			"size":340,
 			"children": [
 				"expo-a-a",
 				"expo-a-b",
