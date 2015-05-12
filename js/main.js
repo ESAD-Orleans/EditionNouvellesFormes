@@ -2,16 +2,16 @@ requirejs.config({
 	baseUrl: 'js',
 	paths: {
 
-		text: '../bower_components/requirejs-plugins/lib/text',
-		json: '../bower_components/requirejs-plugins/src/json',
-		stache: '../bower_components/requirejs-mustache/stache',
+		text: 'vendors/requirejs-plugins/text',
+		json: 'vendors/requirejs-plugins/json',
+		stache: 'vendors/requirejs-mustache',
 
 		tpl:'../templates/',
 
-		jquery: '../bower_components/jquery/dist/jquery.min',
-		underscore: '../bower_components/underscore/underscore-min',
-		backbone: '../bower_components/backbone/backbone',
-		mustache: '../bower_components/mustache.js/mustache.min'
+		jquery: 'vendors/jquery',
+		underscore: 'vendors/underscore',
+		backbone: 'vendors/backbone',
+		mustache: 'vendors/mustache'
 	},
 	stache: {
 		extension: '.stache', // default = '.html'

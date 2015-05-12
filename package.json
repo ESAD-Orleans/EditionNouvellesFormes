@@ -28,5 +28,7 @@
     "url": "https://github.com/ESAD-Orleans/EditionNouvellesFormes/issues"
   },
   "homepage": "https://github.com/ESAD-Orleans/EditionNouvellesFormes",
-  "devDependencies": {}
+  "devDependencies": {
+    "grunt-bowercopy": "^1.2.0"
+  }
 }
