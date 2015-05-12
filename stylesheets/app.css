@@ -67,7 +67,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 10, ../sass/app.scss */
+/* line 13, ../sass/app.scss */
 html, body {
   background: #ccc;
   overflow: hidden;
@@ -76,16 +76,15 @@ html, body {
   height: 100%;
 }
 
-/* line 18, ../sass/app.scss */
-#root {
-  background: red;
+/* line 21, ../sass/app.scss */
+#roots {
   position: absolute;
   left: 50vw;
   top: 50vh;
   margin: auto;
 }
 
-/* line 26, ../sass/app.scss */
+/* line 28, ../sass/app.scss */
 .square {
   position: absolute;
   background: #fff;
@@ -94,29 +93,38 @@ html, body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  -moz-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+  -o-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+  -webkit-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+  transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
   border: solid white 1px;
 }
-/* line 34, ../sass/app.scss */
+/* line 37, ../sass/app.scss */
+.square.opened {
+  width: 200px;
+  height: 200px;
+}
+/* line 42, ../sass/app.scss */
 .square.TR, .square.TL {
   bottom: -1px;
 }
-/* line 37, ../sass/app.scss */
+/* line 45, ../sass/app.scss */
 .square.BR, .square.TR {
   right: -1px;
 }
-/* line 40, ../sass/app.scss */
+/* line 48, ../sass/app.scss */
 .square.tint-white {
   background-color: white;
 }
-/* line 41, ../sass/app.scss */
+/* line 49, ../sass/app.scss */
 .square.tint-orange {
   background-color: #ef6814;
 }
-/* line 42, ../sass/app.scss */
+/* line 50, ../sass/app.scss */
 .square.tint-blue {
   background-color: #57b5f4;
 }
-/* line 43, ../sass/app.scss */
+/* line 51, ../sass/app.scss */
 .square.tint-green {
   background-color: #61d772;
 }

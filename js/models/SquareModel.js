@@ -3,7 +3,10 @@
 // NodeModel Backbone Model
 //
 define(['underscore', 'jquery', 'backbone', 'models/AppModel'], function (_, $, Backbone, app) {
-	return Backbone.Model.extend({
+
+	var squares = [];
+
+	var SquareModel = Backbone.Model.extend({
 		defaults:{
 			color:'white'
 		},
@@ -20,14 +23,19 @@ define(['underscore', 'jquery', 'backbone', 'models/AppModel'], function (_, $, 
 				});
 				model.set('children',new SquareCollection(children));
 			}
-			_(model.attributes).each(function(i,k){
-				// assign each value to object
-				//model[k] = i;
-				//console.log(k,i)
-			})
+			_(squares).push(model);
 		},
 		index:function(){
 			return this.collection ? this.collection.indexOf(this) : -1;
 		}
 	});
+
+	// static methods & properties
+	SquareModel.squares = squares;
+	SquareModel.getById = function(id){
+		return _(SquareModel.squares).find(function(square){return square.get('id')==id;});
+	};
+
+	return SquareModel;
+
 });

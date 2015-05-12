@@ -1,5 +1,5 @@
-<div id="root">
+<div id="roots">
 	{{#models}}
-		<div id="square-{{#m}}id{{/m}}" class="square {{#m}}turn{{/m}} tint-{{#m}}color{{/m}}"></div>
+		<div id="square-{{#m}}id{{/m}}"></div>
 	{{/models}}
 </div>
