@@ -19,7 +19,7 @@ html,body{
   height: 100%;
 }
 
-#roots{
+.stage{
   position:absolute;
   left:50vw;
   top:50vh;
@@ -28,18 +28,43 @@ html,body{
 
 .square{
   position: absolute;
-  background: #fff;
   @include box-sizing();
   @include transition();
-  border:solid $white 1px;
+  .origin{
+    position:absolute;
+    &:after,&:before{
+      content:' ';
+      display:block;
+      border-width: 0px;
+      border-style: solid;
+      position:absolute;
+      z-index: 10;
+    }
+    &:after{
+      top:-5px;
+      height: 10px;
+      border-color: #000;
+      border-left-width:1px;
+    }
+    &:before{
+      left:-5px;
+      width: 10px;
+      border-color: #00f;
+      border-top-width:1px;
+    }
+  }
   &.opened{
   }
 
   &.TR,&.TL{
-    bottom:-1px;
+    .shape{
+      bottom: -1px;
+    }
   }
   &.BR,&.TR{
-    right:-1px;
+    .shape{
+      right: -1px;
+    }
   }
   &.BL,&.TL{
     > .children {
@@ -51,10 +76,28 @@ html,body{
       //top:100%;
     }
   }
-  &.tint-white { background-color:$white;}
-  &.tint-orange { background-color:$orange;}
-  &.tint-blue { background-color:$blue;}
-  &.tint-green { background-color:$green;}
+  .shape {
+    border: solid $white 1px;
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    @include box-sizing();
+    @include transition();
+
+    &.tint-white {
+      background-color: $white;
+    }
+    &.tint-orange {
+      background-color: $orange;
+    }
+    &.tint-blue {
+      background-color: $blue;
+    }
+    &.tint-green {
+      background-color: $green;
+    }
+  }
+
 
   .children{
     position:absolute;

@@ -1,5 +1,5 @@
-<div id="roots">
-	{{#models}}
-		<div id="square-{{id}}"></div>
-	{{/models}}
+<div class="stage">
+	<div class="squares">
+
+	</div>
 </div>

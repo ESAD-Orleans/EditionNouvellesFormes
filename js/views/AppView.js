@@ -9,9 +9,9 @@ define(['underscore', 'jquery', 'backbone','models/AppModel', 'stache!app','view
 			this.render();
 		},
 		render:function(){
-			this.$el.html(template(app.get('squares')));
-			this.$el.find('#roots > div').each(function(){
-				new SquareView({el:this});
+			this.$el.html(template());
+			app.get('squares').each(function(squareModel){
+				new SquareView({model: squareModel});
 			});
 		}
 	});

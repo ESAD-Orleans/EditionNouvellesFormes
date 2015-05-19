@@ -49,6 +49,9 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			this.bind('change:opened',this.changeOpening,this);
 			this.bind('changeSize',this.changeSize,this);
 		},
+		children:function(){
+			return this.get('children');
+		},
 		root:function(){
 			return this.get('root');
 		},
@@ -128,6 +131,28 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 		},
 		height: function () {
 			return this.currentSize() * this.ratio();
+		},
+		left: function(){
+			var p = this.parent();
+			if (!p) return 0;
+			return this.parent().centerX()+this.parent().directionLeft(this.parent().width()/2);
+		},
+		top: function(){
+			var p = this.parent();
+			if(!p) return 0;
+			return this.parent().centerY()+this.parent().directionTop(this.parent().height()/2);
+		},
+		directionLeft:function(size){
+			return (this.turn().match('L')? size:1-size);
+		},
+		directionTop:function(size){
+			return (this.turn().match('B')? size:1-size);
+		},
+		centerX:function(){
+			return this.left();
+		},
+		centerY:function(){
+			return this.top();
 		}
 	});
 

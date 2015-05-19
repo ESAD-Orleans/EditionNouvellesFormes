@@ -27,6 +27,7 @@
     "mustache.js": "~2.0.0",
     "requirejs-plugins": "~1.0.3",
     "requirejs-mustache": "*",
-    "requirejs": "~2.1.17"
+    "requirejs": "~2.1.17",
+    "gsap": "~1.16.1"
   }
 }

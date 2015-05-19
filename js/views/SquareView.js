@@ -9,20 +9,37 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square']
 			'click':'toggleOpening'
 		},
 		initialize:function(){
-			this.model = SquareModel.getById(this.$el.attr('id').slice(7));
 			this.render();
 		},
-		render:function(){
+		render:function() {
 			var model = this.model,
 				classes = ['square'];
 			_(classes).push(model.get('turn'));
-			_(classes).push('tint-'+model.tint());
+			this.el = document.createElement('div');
+			this.$el = $(this.el);
+			$('.squares').append(this.$el);
 			this.$el.addClass(classes.join(' '));
 			this.$el.html(template(model));
+			this.$el.find('> .shape').addClass('tint-' + model.tint())
+			model.set('view', this);
+			var children;
+			if (children = model.children()) {
+				children.each(function (square) {
+					new SquareView({model:square});
+				});
+			}
+			/*
 			this.$el.find('> .children > *').each(function(){
 				new SquareView({el:this});
-			});
-			this.$el.css({width:model.width(),height:model.height(),zIndex:model.get('zIndex')});
+			});*/
+			this.$el.css({
+				zIndex:model.get('zIndex'),
+				left: model.left(),
+				top: model.top()});
+			this.$el.find('>.shape').css({
+				width: model.width(),
+				height: model.height()
+			})
 			model.bind('changeSize',this.changeSize,this);
 		},
 		toggleOpening:function(e){
@@ -44,7 +61,10 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square']
 			}else{
 				this.$el.removeClass('opened');
 			}
-			this.$el.css({width: model.width(), height: model.height()});
+			this.$el.css({left:model.left(),top:model.top()});
+			this.$el.find('>.shape').css({
+				width: model.width(), height: model.height()
+			})
 
 		}
 

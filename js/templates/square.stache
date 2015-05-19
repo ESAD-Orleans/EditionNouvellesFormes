@@ -1,5 +1,3 @@
-<div class="children">
-{{#renderChildren}}
-	<div id="square-{{id}}"></div>
-{{/renderChildren}}
+<div class="origin"></div>
+<div class="shape">
 </div>
