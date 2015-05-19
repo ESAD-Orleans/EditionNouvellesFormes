@@ -62,7 +62,21 @@
 			"id": "expo-a-b"
 		},
 		{
-			"id": "expo-a-c"
+			"id": "expo-a-c",
+			"children": [
+				"expo-a-a-a",
+				"expo-a-a-b",
+				"expo-a-a-c"
+			]
+		},
+		{
+			"id":"expo-a-a-a"
+		},
+		{
+			"id": "expo-a-a-b"
+		},
+		{
+			"id": "expo-a-a-c"
 		},
 		{
 			"id":"ressource-a"
