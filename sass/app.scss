@@ -53,7 +53,11 @@ html,body{
       border-top-width:1px;
     }
   }
-  &.opened{
+  visibility: hidden;
+  opacity: 0;
+  &.parentOpened,&.base{
+    visibility: visible;
+    opacity: 1;
   }
 
   &.TR,&.TL{

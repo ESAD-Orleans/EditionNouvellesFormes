@@ -15,6 +15,8 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square']
 			var model = this.model,
 				classes = ['square'];
 			_(classes).push(model.get('turn'));
+			_(classes).push(model.opened()?'opened':'');
+			_(classes).push(model.parent()?'':'base');
 			this.el = document.createElement('div');
 			this.$el = $(this.el);
 			$('.squares').append(this.$el);
@@ -33,7 +35,7 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square']
 				new SquareView({el:this});
 			});*/
 			this.$el.css({
-				zIndex:model.get('zIndex'),
+				zIndex:model.level(),
 				left: model.left(),
 				top: model.top()});
 			this.$el.find('>.shape').css({
@@ -60,6 +62,11 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square']
 				this.$el.addClass('opened');
 			}else{
 				this.$el.removeClass('opened');
+			}
+			if(model.parent() && model.parent().opened()){
+				this.$el.addClass('parentOpened');
+			}else{
+				this.$el.removeClass('parentOpened');
 			}
 			this.$el.css({left:model.left(),top:model.top()});
 			this.$el.find('>.shape').css({

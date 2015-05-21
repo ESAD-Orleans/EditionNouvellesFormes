@@ -67,6 +67,14 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 		index:function(){
 			return this.collection ? this.collection.indexOf(this) : -1;
 		},
+		level:function(){
+			var l= 0, parent = this.parent();
+			while(!_.isUndefined(parent)){
+				l++;
+				parent = parent.parent();
+			}
+			return l;
+		},
 		renderChildren:function(){
 			var model = this;
 			return function(template,subRenderer){
