@@ -14,6 +14,7 @@ module.exports = function (grunt) {
 					'jquery.js': 'jquery/dist/jquery.min.js',
 					'underscore.js': 'underscore/underscore-min.js',
 					'backbone.js': 'backbone/backbone.js',
+					'interact.js': 'interact/interact.min.js',
 					'require.js': 'requirejs/require.js',
 					'mustache.js': 'mustache.js/mustache.min.js',
 					'gsap/EasePack.js': 'gsap/src/minified/easing/EasePack.min.js',

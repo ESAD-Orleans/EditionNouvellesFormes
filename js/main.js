@@ -11,7 +11,8 @@ requirejs.config({
 		jquery: 'vendors/jquery',
 		underscore: 'vendors/underscore',
 		backbone: 'vendors/backbone',
-		mustache: 'vendors/mustache'
+		mustache: 'vendors/mustache',
+		interact: 'vendors/interact'
 	},
 	stache: {
 		extension: '.stache', // default = '.html'

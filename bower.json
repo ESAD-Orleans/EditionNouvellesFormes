@@ -28,6 +28,7 @@
     "requirejs-plugins": "~1.0.3",
     "requirejs-mustache": "*",
     "requirejs": "~2.1.17",
-    "gsap": "~1.16.1"
+    "gsap": "~1.16.1",
+    "interact": "~1.2.4"
   }
 }

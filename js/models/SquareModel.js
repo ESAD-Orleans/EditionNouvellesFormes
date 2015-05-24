@@ -100,7 +100,6 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			this.set('opened', !this.get('opened'))
 		},
 		changeOpening:function(m,opening){
-			console.log('changeOpening %s', m.get('id'),opening);
 			var children = this.get('children');
 			if(!opening && children){
 				children.each(function(square){
@@ -111,7 +110,6 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			this.trigger('changeSize');
 		},
 		changeSize:function(){
-			console.log('changeSize', this.get('id'), this.opened());
 			var children = this.get('children');
 			if (children) {
 				children.each(function (square) {
@@ -135,26 +133,31 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			return this.parentOpened() ? this.opened() ? this.get('size') : this.get('baseSize') : Math.ceil(this.parent().currentSize()/2);
 		},
 		width:function(){
-			return this.currentSize();
+			var roundMethod = this.turnIndex()>1 ? Math.ceil : Math.floor;
+			return roundMethod(this.currentSize());
 		},
 		height: function () {
-			return this.currentSize() * this.ratio();
+			var roundMethod = this.turnIndex() % 2 == 0 ? Math.ceil : Math.floor;
+			return roundMethod(this.currentSize() * this.ratio());
 		},
 		left: function(){
 			var p = this.parent();
 			if (!p) return 0;
-			return this.parent().centerX()+this.parent().directionLeft(this.parent().width()/2);
+			//var
+			var roundMethod = this.turnIndex() > 1 ? Math.ceil : Math.floor;
+			return roundMethod(this.parent().centerX()+this.parent().directionLeft(this.parent().width()/2));
 		},
 		top: function(){
 			var p = this.parent();
 			if(!p) return 0;
-			return this.parent().centerY()+this.parent().directionTop(this.parent().height()/2);
+			var roundMethod = this.turnIndex() % 2 == 0 ? Math.ceil : Math.floor;
+			return roundMethod(this.parent().centerY()+this.parent().directionTop(this.parent().height()/2));
 		},
 		directionLeft:function(size){
-			return (this.turn().match('L')? size:1-size);
+			return (this.turn().match('L')? size:-size);
 		},
 		directionTop:function(size){
-			return (this.turn().match('B')? size:1-size);
+			return (this.turn().match('B')? size:-size);
 		},
 		centerX:function(){
 			return this.left();
