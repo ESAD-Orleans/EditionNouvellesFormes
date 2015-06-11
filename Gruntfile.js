@@ -16,6 +16,7 @@ module.exports = function (grunt) {
 					'backbone.js': 'backbone/backbone.js',
 					'interact.js': 'interact/interact.min.js',
 					'require.js': 'requirejs/require.js',
+					'Snap.svg.js': 'Snap.svg/dist/snap.svg-min.js',
 					'mustache.js': 'mustache.js/mustache.min.js',
 					'gsap/EasePack.js': 'gsap/src/minified/easing/EasePack.min.js',
 					'gsap/TweenMax.js': 'gsap/src/minified/TweenMax.min.js',

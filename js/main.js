@@ -12,6 +12,7 @@ requirejs.config({
 		underscore: 'vendors/underscore',
 		backbone: 'vendors/backbone',
 		mustache: 'vendors/mustache',
+		Snap: 'vendors/Snap.svg',
 		interact: 'vendors/interact'
 	},
 	stache: {

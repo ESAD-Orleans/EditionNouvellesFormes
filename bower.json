@@ -29,6 +29,7 @@
     "requirejs-mustache": "*",
     "requirejs": "~2.1.17",
     "gsap": "~1.16.1",
-    "interact": "~1.2.4"
+    "interact": "~1.2.4",
+    "Snap.svg": "~0.4.1"
   }
 }
