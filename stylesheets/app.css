@@ -77,105 +77,108 @@ html, body {
 }
 
 /* line 22, ../sass/app.scss */
-.stage {
+#stage {
   position: absolute;
-  left: 50vw;
-  top: 50vh;
+  width: 100vw;
+  height: 100vh;
   margin: auto;
 }
 
-/* line 29, ../sass/app.scss */
-.square {
+/*
+.square{
   position: absolute;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  -o-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  -webkit-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+  @include box-sizing();
+  @include transition();
+  .origin{
+    position:absolute;
+    &:after,&:before{
+      content:' ';
+      display:block;
+      border-width: 0px;
+      border-style: solid;
+      position:absolute;
+      z-index: 10;
+    }
+    &:after{
+      top:-5px;
+      height: 10px;
+      border-color: #000;
+      border-left-width:1px;
+    }
+    &:before{
+      left:-5px;
+      width: 10px;
+      border-color: #00f;
+      border-top-width:1px;
+    }
+  }
   visibility: hidden;
   opacity: 0;
+  &.parentOpened,&.base{
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.TR,&.TL{
+    .shape{
+      bottom: -1px;
+    }
+  }
+  &.BR,&.TR{
+    .shape{
+      right: -1px;
+    }
+  }
+  &.BL,&.TL{
+    > .children {
+      //left: 100%;
+    }
+  }
+  &.BR,&.BL{
+    > .children{
+      //top:100%;
+    }
+  }
+  .shape {
+    border: solid $white 1px;
+    background: #fff;
+    position: absolute;
+    width: 100%;
+    @include box-sizing();
+    @include transition();
+
+    &.tint-white {
+      background-color: $white;
+    }
+    &.tint-orange {
+      background-color: $orange;
+    }
+    &.tint-blue {
+      background-color: $blue;
+    }
+    &.tint-green {
+      background-color: $green;
+    }
+  }
+
+
+  .children{
+    position:absolute;
+    width:0%;
+    height:0%;
+    left:50%;
+    top:50%;
+    @include transition();
+    //visibility: hidden;
+    //opacity: 0;
+  }
+
+  &.opened{
+    > .children{
+      //visibility: visible;
+      //opacity:1;
+    }
+  }
+
 }
-/* line 33, ../sass/app.scss */
-.square .origin {
-  position: absolute;
-}
-/* line 35, ../sass/app.scss */
-.square .origin:after, .square .origin:before {
-  content: ' ';
-  display: block;
-  border-width: 0px;
-  border-style: solid;
-  position: absolute;
-  z-index: 10;
-}
-/* line 43, ../sass/app.scss */
-.square .origin:after {
-  top: -5px;
-  height: 10px;
-  border-color: #000;
-  border-left-width: 1px;
-}
-/* line 49, ../sass/app.scss */
-.square .origin:before {
-  left: -5px;
-  width: 10px;
-  border-color: #00f;
-  border-top-width: 1px;
-}
-/* line 58, ../sass/app.scss */
-.square.parentOpened, .square.base {
-  visibility: visible;
-  opacity: 1;
-}
-/* line 64, ../sass/app.scss */
-.square.TR .shape, .square.TL .shape {
-  bottom: -1px;
-}
-/* line 69, ../sass/app.scss */
-.square.BR .shape, .square.TR .shape {
-  right: -1px;
-}
-/* line 83, ../sass/app.scss */
-.square .shape {
-  border: solid white 1px;
-  background: #fff;
-  position: absolute;
-  width: 100%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  -o-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  -webkit-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-}
-/* line 91, ../sass/app.scss */
-.square .shape.tint-white {
-  background-color: white;
-}
-/* line 94, ../sass/app.scss */
-.square .shape.tint-orange {
-  background-color: #ef6814;
-}
-/* line 97, ../sass/app.scss */
-.square .shape.tint-blue {
-  background-color: #57b5f4;
-}
-/* line 100, ../sass/app.scss */
-.square .shape.tint-green {
-  background-color: #61d772;
-}
-/* line 106, ../sass/app.scss */
-.square .children {
-  position: absolute;
-  width: 0%;
-  height: 0%;
-  left: 50%;
-  top: 50%;
-  -moz-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  -o-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  -webkit-transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-  transition: all 0.5s cubic-bezier(0.75, 0, 0.25, 1);
-}
+*/
