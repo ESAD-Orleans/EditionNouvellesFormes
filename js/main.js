@@ -7,6 +7,8 @@ requirejs.config({
 		stache: 'vendors/requirejs-mustache',
 
 		tpl:'../templates/',
+		colors: '../data/colors.json',
+		turns: '../data/turns.json',
 
 		jquery: 'vendors/jquery',
 		underscore: 'vendors/underscore',

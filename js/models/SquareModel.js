@@ -2,15 +2,15 @@
 // 2015
 // NodeModel Backbone Model
 //
-define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json!../../data/turns.json'], function (_, $, Backbone, mustache, app, turns) {
+define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json!turns', 'json!colors'], function (_, $, Backbone, mustache, app, turns, colors) {
 
-	var squares = [];
+	var squares = _([]);
 
 	var SquareModel = Backbone.Model.extend({
 		defaults:{
 			color:'white',
-			baseSize:133,
-			size:199,
+			baseSize:144,
+			openedScale:3,
 			ratio:1,
 			opened:false
 		},
@@ -19,17 +19,22 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 				SquareCollection = this.collection.constructor,
 				children = this.get('children'),
 				parent = model.get('parent');
+			//
+			//console.log('initialize %s',this.id,squares.size());
+			squares.push(this);
 
 			if(parent){
-				this.set('baseSize',parent.get('size')/2);
+				this.set('size',parent.openedScale()*parent.size()/2);
+				console.log(this.get('size'));
 				if(_.isUndefined(this.get('tint'))){
-					model.set('tint',parent.tint());
+					model.set('tint',parent.get('tint'));
 				}
 				if(_.isUndefined(this.get('zIndex'))){
 					model.set('zIndex',parent.get('zIndex')+1);
 				}
 			}else{
 				this.set({
+					size:model.get('baseSize'),
 					root:model,
 					zIndex:0
 				});
@@ -45,7 +50,6 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 				});
 				model.set('children',new SquareCollection(children));
 			}
-			_(squares).push(model);
 			this.bind('change:opened',this.changeOpening,this);
 			this.bind('changeSize',this.changeSize,this);
 		},
@@ -56,7 +60,7 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			return this.get('root');
 		},
 		tint:function(){
-			return this.get('tint');
+			return colors[this.get('tint')];
 		},
 		turn:function(){
 			return this.get('turn');
@@ -123,47 +127,74 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 		opened:function(){
 			return this.get('opened');
 		},
+		visibility:function(){
+			return this.level() == 0 || this.parent().opened()?'visible':'hidden';
+		},
+		opacity:function(){
+			return this.level() == 0 || this.parent().opened() ? 1 : 0;
+		},
 		ratio:function(){
 			return this.get('ratio');
+		},
+		openedScale:function(){
+			return this.get('openedScale');
 		},
 		size:function(){
 			return this.get('size');
 		},
 		currentSize:function(){
-			return this.parentOpened() ? this.opened() ? this.get('size') : this.get('baseSize') : Math.ceil(this.parent().currentSize()/2);
+			return this.parentOpened() ? this.opened() ? this.size() * this.openedScale() : this.size() : Math.ceil(this.parent().currentSize() / 2);
+		},
+		currentScale:function(){
+			return this.opened() ? this.openedScale() : 1;
+		},
+		currentScaleTransform:function(){
+			return 'scale(' +this.currentScale()+')';
 		},
 		width:function(){
-			var roundMethod = this.turnIndex()>1 ? Math.ceil : Math.floor;
-			return roundMethod(this.currentSize());
+			return this.currentSize();
+		},
+		isLeft:function(){
+			return this.turn().match('L');
+		},
+		isTop:function(){
+			return this.turn().match('T');
 		},
 		height: function () {
-			var roundMethod = this.turnIndex() % 2 == 0 ? Math.ceil : Math.floor;
-			return roundMethod(this.currentSize() * this.ratio());
+			return this.currentSize() * this.ratio();
 		},
 		left: function(){
 			var p = this.parent();
 			if (!p) return 0;
 			//var
-			var roundMethod = this.turnIndex() > 1 ? Math.ceil : Math.floor;
-			return roundMethod(this.parent().centerX()+this.parent().directionLeft(this.parent().width()/2));
+			return this.parent().centerX()+this.parent().directionLeft(this.parent().width()/2);
 		},
 		top: function(){
 			var p = this.parent();
 			if(!p) return 0;
-			var roundMethod = this.turnIndex() % 2 == 0 ? Math.ceil : Math.floor;
-			return roundMethod(this.parent().centerY()+this.parent().directionTop(this.parent().height()/2));
+			return this.parent().centerY()+this.parent().directionTop(this.parent().height()/2);
+		},
+		transform: function(){
+			return 'translate(' + this.left() + ',' + this.top() + ')';
 		},
 		directionLeft:function(size){
-			return (this.turn().match('L')? size:-size);
+			return (this.isLeft()? -size:size);
 		},
 		directionTop:function(size){
-			return (this.turn().match('B')? size:-size);
+			return (this.isTop()? -size:size);
 		},
 		centerX:function(){
 			return this.left();
 		},
 		centerY:function(){
 			return this.top();
+		},
+		zIndex:function(){
+			return this.get('zIndex');
+		},
+		view:function(view){
+			if(!_.isUndefined(view)){this.set('view',view)}
+			return this.get('view');
 		}
 	});
 

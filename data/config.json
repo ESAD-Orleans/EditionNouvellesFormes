@@ -1,9 +1,9 @@
 {
 	"parents":[
+		"expositions",
 		"seminaires",
 		"ressources",
-		"conferences",
-		"expositions"
+		"conferences"
 	],
 	"squares":[
 		{
@@ -18,12 +18,6 @@
 			"tint":"green"
 		},
 		{
-			"id":"conferences",
-			"title":"Conférences",
-			"tint":"white",
-			"children":["conference-tab"]
-		},
-		{
 			"id":"ressources",
 			"title":"Ressources",
 			"tint":"orange",
@@ -35,6 +29,12 @@
 
 		},
 		{
+			"id": "conferences",
+			"title": "Conférences",
+			"tint": "light-grey",
+			"children": ["conference-tab"]
+		},
+		{
 			"id":"conference-tab"
 		},
 		{
@@ -42,7 +42,6 @@
 		},
 		{
 			"id":"expo-a",
-			"size":340,
 			"children": [
 				"expo-a-a",
 				"expo-a-b",
