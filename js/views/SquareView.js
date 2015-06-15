@@ -25,20 +25,18 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 					class:classes.join(' '),
 					transform:model.transform(),
 					opacity: model.opacity(),
-					//visibility:model.visibility()
+					visibility:model.visibility()
 				});
 			this.el = this.g.node();
 			this.$el = $(this.el);
-			if(model.level()==0){
-				console.log(model.id,model.turn(),this.el)
-			}
 			this.rect = this.g.append('rect')
 				.attr({
 					width:model.width(),
 					height:model.height(),
 					fill:model.tint(),
 					transform: 'scale('+(model.isLeft() ? -1 : 1)+','+(model.isTop() ? -1 : 1)+')',
-					stroke:'#fff'
+					stroke:'#fff',
+					'vector-effect':'non-scaling-stroke'
 				});
 			this.g.view = this;
 			model.view(this);
@@ -71,10 +69,10 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 			});
 			this.g.transition().attr({
 				transform: model.transform(),
-				//visibility:model.visibility(),
+				visibility:model.visibility(),
 				opacity:model.opacity()
 			});
-			console.log(model.id,model.width());
+			//console.log(model.id,model.width());
 			/*if(model.opened()){
 				this.$el.addClass('opened');
 			}else{

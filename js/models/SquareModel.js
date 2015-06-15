@@ -25,7 +25,6 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 
 			if(parent){
 				this.set('size',parent.openedScale()*parent.size()/2);
-				console.log(this.get('size'));
 				if(_.isUndefined(this.get('tint'))){
 					model.set('tint',parent.get('tint'));
 				}
