@@ -69,8 +69,12 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 			});
 			this.g.transition().attr({
 				transform: model.transform(),
-				visibility:model.visibility(),
+				visibility:'visible',
 				opacity:model.opacity()
+			}).each('end',function(){
+				d3.select(this).attr({
+					visibility:model.visibility()
+				})
 			});
 		}
 

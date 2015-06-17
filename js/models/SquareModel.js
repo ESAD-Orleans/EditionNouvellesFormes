@@ -166,12 +166,12 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			var p = this.parent();
 			if (!p) return 0;
 			//var
-			return this.parent().centerX()+this.parent().directionLeft(this.parent().width()/2);
+			return this.parent().centerX();//+this.parent().directionLeft(this.parent().width()/2);
 		},
 		top: function(){
 			var p = this.parent();
 			if(!p) return 0;
-			return this.parent().centerY()+this.parent().directionTop(this.parent().height()/2);
+			return this.parent().centerY();//+this.parent().directionTop(this.parent().height()/2);
 		},
 		transform: function(){
 			return 'translate(' + this.left() + ',' + this.top() + ')';
@@ -183,10 +183,10 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			return (this.isTop()? -size:size);
 		},
 		centerX:function(){
-			return this.left();
+			return this.left()+this.directionLeft(this.width()/2);
 		},
 		centerY:function(){
-			return this.top();
+			return this.top()+this.directionTop(this.height()/2);
 		},
 		zIndex:function(){
 			return this.get('zIndex');

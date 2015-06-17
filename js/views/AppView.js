@@ -20,10 +20,15 @@ define(['underscore', 'jquery', 'backbone','models/AppModel','models/SquareModel
 			});
 			this.renderStage();
 		},
-		renderStage:function(){
-			this.g.attr({
-				transform: 'translate(.5,.5) translate('+app.offsetX()+','+app.offsetY()+')'
-			})
+		renderStage:function(transition){
+			var targetAttr = {
+				transform: 'translate('+(app.stageWidth()/2+.5)+','+(app.stageHeight() / 2 +.5)+') scale('+app.scale()+') translate(' + app.offsetX() + ',' + app.offsetY() + ') '
+			};
+			if(transition === true){
+				this.g.transition().attr(targetAttr)
+			}else{
+				this.g.attr(targetAttr)
+			}
 		},
 		render:function(){
 
@@ -67,7 +72,20 @@ define(['underscore', 'jquery', 'backbone','models/AppModel','models/SquareModel
 
 		},
 		focusSquare:function(model){
-			console.log(this,model.id);
+			var squareTarget = model.opened() ? model:model.parent(),
+				targetX = 0,
+				targetY = 0,
+				targetScale = app.get('initialScale');
+			if(squareTarget){
+				targetX = squareTarget.centerX();
+				targetY = squareTarget.centerY();
+				targetScale = app.stageWidth()*.4/squareTarget.width()
+			}
+			app.offsetX(targetX);
+			app.offsetY(targetY);
+			app.scale(targetScale);
+			//
+			this.renderStage(true);
 		},
 		drag:function(event){
 			app.offsetX((app.get('offsetX')||0)-event.dx/app.scale());
