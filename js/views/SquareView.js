@@ -2,11 +2,11 @@
 // 2015
 // SquareView Backbone View
 //
-define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square', 'd3', 'interact'], function (_, $, Backbone, SquareModel, template, d3, interact) {
+define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square', 'd3', 'interact','jqueryFinger'], function (_, $, Backbone, SquareModel, template, d3, interact) {
 	var SquareView = Backbone.View.extend({
 
 		events:{
-			'click':'toggleOpening'
+			'tap':'touch'
 		},
 		initialize:function(){
 			this.render();
@@ -49,17 +49,17 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 			}
 			model.bind('changeSize',this.changeSize,this);
 		},
+		touch:function(e){
+			this.toggleOpening(e);
+			this.model.trigger('focus', this.model);
+		},
 		toggleOpening:function(e){
-
 			var model = this.model;
 			if(!model.parent() || model.parent().opened()) {
 				e.stopPropagation();
 				e.preventDefault();
 				model.toggleOpening();
 			}
-			//this.$el.toggleClass('opened');
-			//this.$el.css({width: model.width(), height: model.height()});
-			//this.$el.find('> .children > .square').css({width: model.width()/2, height: model.height()/2})
 		},
 		changeSize:function(){
 			var model = this.model;
@@ -72,22 +72,6 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 				visibility:model.visibility(),
 				opacity:model.opacity()
 			});
-			//console.log(model.id,model.width());
-			/*if(model.opened()){
-				this.$el.addClass('opened');
-			}else{
-				this.$el.removeClass('opened');
-			}
-			if(model.parent() && model.parent().opened()){
-				this.$el.addClass('parentOpened');
-			}else{
-				this.$el.removeClass('parentOpened');
-			}
-			this.$el.css({left:model.left(),top:model.top()});
-			this.$el.find('>.shape').css({
-				width: model.width(), height: model.height()
-			})*/
-
 		}
 
 	});

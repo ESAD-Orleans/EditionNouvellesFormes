@@ -10,20 +10,24 @@ define(['underscore', 'jquery', 'backbone','models/AppModel','models/SquareModel
 			this.render();
 		},
 		resize:function(){
-			app.set('stageWidth',this.$el.outerWidth());
-			app.set('stageHeight',this.$el.outerHeight());
+			app.set('stageWidth', $(window).width());
+			app.set('stageHeight', $(window).height());
+			console.log($(window).width(), $(window).height());
 			this.svg.attr({
+				width: app.stageWidth(),
+				height: app.stageHeight(),
 				viewBox: '0 0 ' + app.stageWidth() + ' ' + app.stageHeight()
 			});
 			this.renderStage();
 		},
 		renderStage:function(){
 			this.g.attr({
-				transform: 'translate('+app.offsetX()+','+app.offsetY()+')'
+				transform: 'translate(.5,.5) translate('+app.offsetX()+','+app.offsetY()+')'
 			})
 		},
 		render:function(){
 
+			var view = this;
 			this.$el.html(template());
 			var svg = d3.select('svg#stage'),
 				g =
@@ -47,6 +51,7 @@ define(['underscore', 'jquery', 'backbone','models/AppModel','models/SquareModel
 			).each(
 				// move to correct index in DOM
 				function(squareModel){
+					squareModel.bind('focus', view.focusSquare, view);
 					g[0][0].appendChild(squareModel.view().el)
 				}
 			);
@@ -60,10 +65,9 @@ define(['underscore', 'jquery', 'backbone','models/AppModel','models/SquareModel
 
 			this.resize();
 
-			/*g.children().sort(function(){
-				console.log(i,arguments)
-			});*/
-
+		},
+		focusSquare:function(model){
+			console.log(this,model.id);
 		},
 		drag:function(event){
 			app.offsetX((app.get('offsetX')||0)-event.dx/app.scale());

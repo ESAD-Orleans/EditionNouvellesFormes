@@ -15,6 +15,7 @@ module.exports = function (grunt) {
 					'underscore.js': 'underscore/underscore-min.js',
 					'backbone.js': 'backbone/backbone.js',
 					'interact.js': 'interact/interact.min.js',
+					'jquery.finger.js': 'jquery.finger/dist/jquery.finger.min.js',
 					'require.js': 'requirejs/require.js',
 					'mustache.js': 'mustache.js/mustache.min.js',
 					'd3.js': 'd3/d3.min.js',

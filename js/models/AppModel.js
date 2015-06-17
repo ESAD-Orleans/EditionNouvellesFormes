@@ -6,7 +6,7 @@ define(['underscore', 'jquery', 'backbone', 'json!../../data/config.json','json!
 	var app,
 		AppModel =  Backbone.Model.extend({
 			defaults:{
-				scale:.5,
+				scale:1,
 				offsetX:0,
 				offsetY:0
 			},
@@ -23,13 +23,13 @@ define(['underscore', 'jquery', 'backbone', 'json!../../data/config.json','json!
 				if(_.isNumber(x)){
 					this.set('offsetX',x);
 				}
-				return -this.get('offsetX')+this.stageWidth()/2;
+				return Math.round(-this.get('offsetX')+this.stageWidth()/2);
 			},
 			offsetY:function(y){
 				if (_.isNumber(y)) {
 					this.set('offsetY', y);
 				}
-				return -this.get('offsetY')+this.stageHeight()/2;
+				return Math.round(-this.get('offsetY')+this.stageHeight()/2);
 			},
 			turn:function(index){
 				return turns[index];

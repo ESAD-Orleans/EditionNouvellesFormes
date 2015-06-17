@@ -69,17 +69,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* line 14, ../sass/app.scss */
 html, body {
-  background: #ccc;
   overflow: hidden;
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
 /* line 22, ../sass/app.scss */
 #stage {
+  background: #ccc;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   margin: auto;
 }
