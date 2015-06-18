@@ -65,15 +65,16 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 					'transform': 'translate(0,0)',//'translate(' + model.directionLeft(model.size()/2) + ',' + model.directionTop(model.size()/2) + ')'
 					 'clip-path': 'url(#clip_' + model.id + ')'
 					}),
-					fontSize = 18 * model.globalScale(),
-					lineHeight = fontSize*1.5;
+					fontSize = model.get('titleFontSize') * model.globalScale(),
+					lineHeight = fontSize* model.get('titleLineHeight');
 				var titleText = titleGroup.append('text').attr({
 					'text-anchor':'middle',
 					'alignment-baseline':'middle',
 					'font-size': fontSize,
-					'font-family': 'Roboto',
-					'font-weight':'700',
-					'transform':'translate(' + model.directionLeft(model.size()/2) + ', ' + model.directionTop(model.size()/2) + ') rotate(-45)'
+					'font-family': model.get('titleFontFamily'),
+					'font-weight': model.get('titleFontWeight'),
+					'fill':model.get('titleColor'),
+					'transform':'translate(' + model.directionLeft(model.size()/2) + ', ' + model.directionTop(model.size()/2) + ') rotate('+model.get('titleRotation')+')'
 				});
 				_(titleLines).each(function(lineText,index){
 					titleText.append('tspan').attr({'alignment-baseline':'middle',x:0,y: lineHeight*(index+.5-titleLines.length/2)}).text(lineText);

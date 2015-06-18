@@ -84,13 +84,62 @@
 			"id": "expo-a-a-c"
 		},
 		{
-			"id":"ressource-a"
+			"id":"ressource-a",
+			"title":"rotation\nexception",
+			"titleRotation":90
 		},
 		{
-			"id": "ressource-b"
+			"id": "ressource-b",
+			"title": "autres\nexceptions",
+			"children":[
+				"ressource-b-a",
+				"ressource-b-b",
+				"ressource-b-c"
+			]
 		},
 		{
-			"id": "ressource-c"
+			"id": "ressource-c",
+			"title": "line\nheight\nexception",
+			"titleLineHeight": 1
+		},
+		{
+			"id": "ressource-b-a",
+			"title":"font size\nexception",
+			"titleFontSize": 24
+		},
+		{
+			"id": "ressource-b-b",
+			"title":"color\nexception",
+			"titleColor": "#fff"
+		},
+		{
+			"id": "ressource-b-c",
+			"title":"and others \nexceptions …",
+			"children":[
+				"ressource-b-c-a",
+				"ressource-b-c-b",
+				"ressource-b-c-c"
+			]
+		},
+		{
+			"id": "ressource-b-c-a",
+			"title":"font weight\nexception",
+			"titleFontWeight": "100"
+		},
+		{
+			"id": "ressource-b-c-b",
+			"title":"font family\nexception",
+			"titleFontFamily": "Georgia"
+		},
+		{
+			"id": "ressource-b-c-c",
+			"title":"mixed\nexcept\n-ions",
+			"titleRotation": 0,
+			"titleColor": "#933",
+			"titleLineHeight": 0.8,
+			"titleFontSize": 32,
+			"titleFontWeight": "100",
+			"titleFontFamily": "Helvetica, Helvetica Neue, Arial"
 		}
 	]
 }

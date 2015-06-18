@@ -12,6 +12,12 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			baseSize:144,
 			openedScale:3,
 			globalScale:1,
+			titleRotation:-45,
+			titleFontSize:18,
+			titleLineHeight:1.5,
+			titleColor:'#000',
+			titleFontFamily:'Roboto',
+			titleFontWeight:'700',
 			ratio:1,
 			opened:false
 		},
@@ -39,7 +45,6 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 					p = p.parent();
 				} while (p)
 				model.set('globalScale', globalScale);
-				console.log(globalScale)
 			}else{
 				this.set({
 					size:model.get('baseSize'),
