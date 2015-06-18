@@ -139,7 +139,9 @@
 			"titleLineHeight": 0.8,
 			"titleFontSize": 32,
 			"titleFontWeight": "100",
-			"titleFontFamily": "Helvetica, Helvetica Neue, Arial"
+			"titleFontFamily": "Helvetica, Helvetica Neue, Arial",
+			"openedScale":6,
+			"ratio":"1280:720"
 		}
 	]
 }

@@ -30,6 +30,12 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			//console.log('initialize %s',this.id,squares.size());
 			squares.push(this);
 
+			if(_.isString(this.get('ratio'))){
+				var ratio = this.get('ratio').split(':');
+				ratio = parseInt(ratio[1])/parseInt(ratio[0])
+				this.set('ratio',ratio);
+			};
+
 			if(parent){
 				this.set('size',parent.openedScale()*parent.size()/2);
 				if(_.isUndefined(this.get('tint'))){
@@ -183,7 +189,7 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			return this.turn().match('T');
 		},
 		height: function () {
-			return this.currentSize() * this.ratio();
+			return this.currentSize() * (this.opened()?this.ratio(): this.parent()?this.parent().ratio():1);
 		},
 		left: function(){
 			var p = this.parent();
