@@ -1,3 +1,14 @@
-<g class="square">
-	<rect fill="#000" x="0" y="0" width="144" height="144"></rect>
+<g id="wrapper_{{id}}" transform="{{transform}}" opacity="{{opacity}}" visibility="{{visibility}}">
+	<defs>
+		<rect id="rect_{{id}}" width="{{width}}" height="{{height}}" transform="{{rectScale}}">
+		</rect>
+		<clipPath id="clip_{{id}}">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rect_{{id}}"></use>
+		</clipPath>
+	</defs>
+	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rect_{{id}}" fill="{{tint}}" stroke="#fff"
+	     vector-effect="non-scaling-stroke"></use>
+	<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rect_{{id}}" fill="#fff" opacity="0"></use>
+
+	<g id="title_{{id}}" clip-path="url(#clip_{{id}})"></g>
 </g>

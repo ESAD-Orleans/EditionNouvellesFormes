@@ -61,7 +61,6 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 			var titleValue = model.get('title');
 			if(titleValue){
 				var titleLines = titleValue.split('\n');
-				console.log(titleLines);
 				var titleGroup = this.title = g.append('g').attr({
 					'transform': 'translate(0,0)',//'translate(' + model.directionLeft(model.size()/2) + ',' + model.directionTop(model.size()/2) + ')'
 					 'clip-path': 'url(#clip_' + model.id + ')'

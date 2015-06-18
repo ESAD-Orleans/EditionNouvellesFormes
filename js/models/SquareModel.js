@@ -79,6 +79,12 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 		index:function(){
 			return this.collection ? this.collection.indexOf(this) : -1;
 		},
+		title:function(){
+			return this.get('title');
+		},
+		titleLines:function(){
+			return _(this.title() ? this.title().split('\n'):[]);
+		},
 		level:function(){
 			var l= 0, parent = this.parent();
 			while(!_.isUndefined(parent)){
@@ -187,6 +193,9 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 		},
 		transform: function(){
 			return 'translate(' + this.left() + ',' + this.top() + ')';
+		},
+		rectScale: function(){
+			return 'scale('+(this.isLeft() ? -1 : 1)+','+(this.isTop() ? -1 : 1)+')';
 		},
 		directionLeft:function(size){
 			return (this.isLeft()? -size:size);

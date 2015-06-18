@@ -1,0 +1,4 @@
+<text text-anchor="middle" alignment-baseline="middle" font-size="18" font-family="Roboto" font-weight="700"
+      transform="translate( directionLeft(size()/2),  directionTop(size()/2) ) rotate(-45)">
+	<tspan alignment-baseline="middle" x="0" y="0">Expositions</tspan>
+</text>
