@@ -11,6 +11,7 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 			color:'white',
 			baseSize:144,
 			openedScale:3,
+			globalScale:1,
 			ratio:1,
 			opened:false
 		},
@@ -31,6 +32,14 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 				if(_.isUndefined(this.get('zIndex'))){
 					model.set('zIndex',parent.get('zIndex')+1);
 				}
+				var globalScale = 1,
+					p = parent;
+				do{
+					globalScale *= p.openedScale()/2;
+					p = p.parent();
+				} while (p)
+				model.set('globalScale', globalScale);
+				console.log(globalScale)
 			}else{
 				this.set({
 					size:model.get('baseSize'),
@@ -137,6 +146,9 @@ define(['underscore', 'jquery', 'backbone', 'mustache', 'models/AppModel', 'json
 		},
 		openedScale:function(){
 			return this.get('openedScale');
+		},
+		globalScale:function(){
+			return this.get('globalScale');
 		},
 		size:function(){
 			return this.get('size');

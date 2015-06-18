@@ -42,6 +42,7 @@
 		},
 		{
 			"id":"expo-a",
+			"title": "Habitat Imprimé",
 			"children": [
 				"expo-a-a",
 				"expo-a-b",
@@ -49,19 +50,24 @@
 			]
 		},
 		{
-			"id": "expo-b"
+			"id": "expo-b",
+			"title": "Hétérotopies"
 		},
 		{
-			"id": "expo-c"
+			"id": "expo-c",
+			"title": "Frac"
 		},
 		{
-			"id":"expo-a-a"
+			"id":"expo-a-a",
+			"title": "Exemple\nsur deux lignes"
 		},
 		{
-			"id": "expo-a-b"
+			"id": "expo-a-b",
+			"title": "Exemple\nsur trois\nlignes"
 		},
 		{
 			"id": "expo-a-c",
+			"title": "Exemple\nsur\nquatres\nlignes",
 			"children": [
 				"expo-a-a-a",
 				"expo-a-a-b",

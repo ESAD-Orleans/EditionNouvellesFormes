@@ -19,25 +19,68 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 			_(classes).push(model.get('turn'));
 			_(classes).push(model.opened()?'opened':'');
 			_(classes).push(model.parent()?'':'base');
-			this.g = squares.append('g')
+			var g = this.g = squares.append('g')
 				.attr({
 					id: model.id,
 					class:classes.join(' '),
 					transform:model.transform(),
 					opacity: model.opacity(),
 					visibility:model.visibility()
+				}),
+				el = this.el = g.node(),
+				$el = this.$el = $(this.el),
+				rectAttr = {
+					id: 'rect_'+model.id,
+					width: model.width(),
+					height: model.height(),
+					transform: 'scale(' + (model.isLeft() ? -1 : 1) + ',' + (model.isTop() ? -1 : 1) + ')'
+				},
+				defs = this.defs = g.append('defs'),
+				clipPath = defs.append('clipPath').attr({
+					id:'clip_'+model.id
 				});
-			this.el = this.g.node();
-			this.$el = $(this.el);
-			this.rect = this.g.append('rect')
+			clipPath.append('use').attr({
+				'xlink:href': '#rect_' + model.id,
+				fill: '#00f',
+				opacity:.3
+			})
+			this.rect = defs.append('rect').attr(rectAttr);
+			this.backgroundRect = g.append('use').attr({
+				'xlink:href':'#rect_' + model.id,
+				fill: model.tint(),
+				stroke: '#fff',
+				'vector-effect': 'non-scaling-stroke'
+			});
+			this.fadeRect = g.append('use')
 				.attr({
-					width:model.width(),
-					height:model.height(),
-					fill:model.tint(),
-					transform: 'scale('+(model.isLeft() ? -1 : 1)+','+(model.isTop() ? -1 : 1)+')',
-					stroke:'#fff',
-					'vector-effect':'non-scaling-stroke'
+					'xlink:href': '#rect_' + model.id,
+					fill: '#fff',
+					opacity:0
 				});
+
+			var titleValue = model.get('title');
+			if(titleValue){
+				var titleLines = titleValue.split('\n');
+				console.log(titleLines);
+				var titleGroup = this.title = g.append('g').attr({
+					'transform': 'translate(0,0)',//'translate(' + model.directionLeft(model.size()/2) + ',' + model.directionTop(model.size()/2) + ')'
+					 'clip-path': 'url(#clip_' + model.id + ')'
+					}),
+					fontSize = 18 * model.globalScale(),
+					lineHeight = fontSize*1.5;
+				var titleText = titleGroup.append('text').attr({
+					'text-anchor':'middle',
+					'alignment-baseline':'middle',
+					'font-size': fontSize,
+					'font-family': 'Roboto',
+					'font-weight':'700',
+					'transform':'translate(' + model.directionLeft(model.size()/2) + ', ' + model.directionTop(model.size()/2) + ') rotate(-45)'
+				});
+				_(titleLines).each(function(lineText,index){
+					titleText.append('tspan').attr({'alignment-baseline':'middle',x:0,y: lineHeight*(index+.5-titleLines.length/2)}).text(lineText);
+				})
+			}
+
 			this.g.view = this;
 			model.view(this);
 			var children;
@@ -62,11 +105,13 @@ define(['underscore', 'jquery', 'backbone','models/SquareModel','stache!square',
 			}
 		},
 		changeSize:function(){
-			var model = this.model;
-			this.rect.transition().attr({
-				width: model.width(),
-				height: model.height()
-			});
+			var model = this.model,
+				rectAttr = {
+					width: model.width(),
+					height: model.height()
+				};
+			this.rect.transition().attr(rectAttr);
+			//this.fadeRect.transition().attr(rectAttr);
 			this.g.transition().attr({
 				transform: model.transform(),
 				visibility:'visible',

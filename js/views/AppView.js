@@ -79,7 +79,7 @@ define(['underscore', 'jquery', 'backbone','models/AppModel','models/SquareModel
 			if(squareTarget){
 				targetX = squareTarget.centerX();
 				targetY = squareTarget.centerY();
-				targetScale = app.stageWidth()*.4/squareTarget.width()
+				targetScale = app.stageWidth()*.275/squareTarget.width()
 			}
 			app.offsetX(targetX);
 			app.offsetY(targetY);
